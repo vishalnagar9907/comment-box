@@ -21,13 +21,17 @@ function App() {
 
   const getData = ()=>{
     const localStorageCommentData = JSON.parse(localStorage.getItem("comment_data"));
-    if(dateSort){
-      sortDescendingOrder(localStorageCommentData);
+    if (localStorageCommentData) {
+      if(dateSort){
+        sortDescendingOrder(localStorageCommentData);
+      }
+      else {
+        sortAscendingOrder(localStorageCommentData);
+      }
+      setCommentsData(localStorageCommentData)
     }
-    else {
-      sortAscendingOrder(localStorageCommentData);
-    }
-    setCommentsData(localStorageCommentData)
+    
+    
   }
 
   const handleInsertNode = (folderId, item, isParentComment) => {
